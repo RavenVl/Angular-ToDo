@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html ng-app="listCurs">
+<head>
+    <title>Task 1</title>
+    <script src="../Libraries/angular.js"></script>
+    <script src="model.js"></script>
+
+    <link href="../Libraries/bootstrap.css" rel="stylesheet"/>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet"/>
+    <script>
+        var listCurs = angular.module("listCurs", []);
+        listCurs.controller("listCurseCtrl", function ($scope) {
+            $scope.data = model;
+        })
+    </script>
+</head>
+<body ng-controller="listCurseCtrl">
+<div class="panel panel-default">
+    <h1 class="panel-heading">ITVDN NEWS</h1>
+    <div class="panel-body">
+        <div class="well" ng-repeat="elem in data">
+            <h3>{{elem.title}}</h3>
+            <div>{{elem.published}}</div>
+            <div style="margin-bottom: 5px">{{elem.description}}</div>
+            <button class="btn btn-primary">Читать дальше</button>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

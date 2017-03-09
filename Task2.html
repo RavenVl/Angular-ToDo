@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html ng-app = "toDoList">
+<head>
+    <title>ToDo List (Task2)</title>
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script src="todo.js"></script>
+    <script>
+
+        var toDoList = angular.module("toDoList", []);
+        toDoList.controller("toDoListCtrl", function ($scope) {
+            $scope.model = todoModel;
+            $scope.addNewDo = function () {
+
+            }
+        });
+
+        // Добавьте AngularJS контроллер
+
+    </script>
+
+</head>
+<body ng-controller="toDoListCtrl">
+
+    <div class="container">
+
+        <h3>ToDo List</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Completed</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="course in data.courses">
+                <td>{{course.name}}</td>
+                <td>{{course.passed}}</td>
+            </tr>
+        </table>
+
+        <div>
+            <!-- Форма для добавления новых задач -->
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="email" class="form-control" id="name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="date">Due date</label>
+                    <input type="password" class="form-control" id="date" placeholder="date">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="password" class="form-control" id="description" placeholder="Description">
+                </div>
+                <div class="form-group">
+                    <label for="check">Completed</label><br>
+                    <input type="checkbox" id="check">
+                </div>
+
+                <button  class="btn btn-default" ng-click="addNewDo()">Add</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
