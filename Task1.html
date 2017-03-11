@@ -11,6 +11,10 @@
         var listCurs = angular.module("listCurs", []);
         listCurs.controller("listCurseCtrl", function ($scope) {
             $scope.data = model;
+            $scope.showDesc = [];
+            $scope.show = function (key) {
+                $scope.showDesc[key] = true;
+            }
         })
     </script>
 </head>
@@ -18,11 +22,25 @@
 <div class="panel panel-default">
     <h1 class="panel-heading">ITVDN NEWS</h1>
     <div class="panel-body">
-        <div class="well" ng-repeat="elem in data">
-            <h3>{{elem.title}}</h3>
-            <div>{{elem.published}}</div>
-            <div style="margin-bottom: 5px">{{elem.description}}</div>
-            <button class="btn btn-primary">Читать дальше</button>
+        <div class="row">
+
+        </div>
+        <div class="well" ng-repeat="(key, elem) in data">
+           <div class="row">
+               <div class="col-md-4">
+                   <h3>{{elem.title}}</h3>
+                   <div>{{elem.published}}</div>
+
+                   <button class="btn btn-primary" ng-click="show(key)">Читать дальше</button>
+               </div>
+               <div class="col-md-8" ng-switch on="showDesc[key]">
+                   <div style="margin-bottom: 5px" ng-switch-when="true">
+                       {{elem.description}}
+                   </div>
+               </div>
+           </div>
+
+
 
         </div>
     </div>
